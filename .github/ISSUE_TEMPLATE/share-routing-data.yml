@@ -1,0 +1,33 @@
+name: Share routing data
+description: Paste your /tier-router export so the default routing can be tuned from real results.
+title: "Routing data"
+labels: ["routing data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for sharing. Run `/tier-router export` in Claude Code: it puts one line of JSON on your clipboard and shows it in the transcript.
+
+        The export holds outcome counts for each kind of task, difficulty estimate, model and effort, plus the adjustments the router has learned. It never includes task text, file names, times or costs. **This issue is public, so please read the export before posting.**
+  - type: textarea
+    id: export
+    attributes:
+      label: Export
+      description: The line from /tier-router export.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything that stood out (optional)
+      description: For example, a kind of task that kept landing on a model that was too weak or too strong for it.
+    validations:
+      required: false
+  - type: checkboxes
+    id: check
+    attributes:
+      label: Before posting
+      options:
+        - label: I read the export, and it holds nothing I want to keep private.
+          required: true

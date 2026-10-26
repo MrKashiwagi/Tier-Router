@@ -1,0 +1,70 @@
+{
+  "name": "tier-router",
+  "displayName": "Tier Router",
+  "version": "0.3.0",
+  "description": "Routes each subagent task to Haiku, Sonnet or Opus by difficulty, sets and adjusts its effort, learns from results, and reports what ran and what it cost.",
+  "author": { "name": "Ibrahim (MrKashiwagi)", "url": "https://github.com/MrKashiwagi" },
+  "homepage": "https://github.com/MrKashiwagi/tier-router",
+  "repository": "https://github.com/MrKashiwagi/tier-router",
+  "license": "MIT",
+  "keywords": ["routing", "subagents", "haiku", "sonnet", "opus", "effort", "cost"],
+  "userConfig": {
+    "profile": {
+      "type": "string",
+      "title": "Routing profile",
+      "description": "How difficulty maps to model and effort. frugal leans cheaper, quality leans stronger.",
+      "options": ["balanced", "frugal", "quality"],
+      "default": "balanced"
+    },
+    "maxModel": {
+      "type": "string",
+      "title": "Strongest model allowed",
+      "description": "Cap on the model any subagent gets. Tasks above the cap run on it at one effort level higher.",
+      "options": ["opus", "sonnet", "haiku"],
+      "default": "opus"
+    },
+    "hardestModel": {
+      "type": "string",
+      "title": "Model for the very hardest tasks",
+      "description": "Choose fable only if your plan includes Claude Fable.",
+      "options": ["opus", "fable"],
+      "default": "opus"
+    },
+    "classifier": {
+      "type": "boolean",
+      "title": "Ask Haiku to rate unclear tasks",
+      "description": "When keyword rules are unsure, one small Haiku request rates the task's difficulty. Off: rules only, no extra requests.",
+      "default": true
+    },
+    "adaptiveEffort": {
+      "type": "boolean",
+      "title": "Raise effort when a subagent struggles",
+      "description": "Raises a running subagent's effort after repeated tool errors or a long run, up to two levels.",
+      "default": true
+    },
+    "learn": {
+      "type": "boolean",
+      "title": "Learn from results",
+      "description": "Adjusts future routing per kind of task when subagents report being stuck, or when work was easy for a strong model.",
+      "default": true
+    },
+    "nudge": {
+      "type": "boolean",
+      "title": "Encourage Claude to delegate",
+      "description": "Tells Claude that delegating self-contained work is cheap while routing is on.",
+      "default": true
+    },
+    "respectExplicit": {
+      "type": "boolean",
+      "title": "Keep a model or effort Claude was asked to use",
+      "description": "When an Agent call already names a model or effort, keep it instead of routing that part.",
+      "default": true
+    },
+    "extraAgents": {
+      "type": "string",
+      "title": "Extra agent types to route",
+      "description": "Comma-separated names of your own subagent types to route too. Built-in general-purpose, claude, Explore and Plan are always routed.",
+      "default": ""
+    }
+  }
+}

@@ -1,0 +1,34 @@
+name: Bug report
+description: Something Tier Router did wrongly or unexpectedly.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to make it happen
+      description: The steps, if you know them.
+    validations:
+      required: false
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Tier Router's version (shown in /plugin) and Claude Code's (claude --version).
+      placeholder: Tier Router 0.3.0, Claude Code 2.1.311
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Report (optional)
+      description: The output of /tier-router. It names recent tasks by their short titles, so remove anything private first; this issue is public.
+      render: text
+    validations:
+      required: false

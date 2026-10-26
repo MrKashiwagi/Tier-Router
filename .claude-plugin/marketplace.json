@@ -1,0 +1,12 @@
+{
+  "name": "tier-router",
+  "description": "Tier Router: difficulty-based model and effort routing for Claude Code subagents.",
+  "owner": { "name": "Ibrahim (MrKashiwagi)" },
+  "plugins": [
+    {
+      "name": "tier-router",
+      "source": "./",
+      "description": "Routes each subagent task to Haiku, Sonnet or Opus by difficulty and self-adjusts its effort."
+    }
+  ]
+}
